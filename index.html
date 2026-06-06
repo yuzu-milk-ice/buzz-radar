@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Buzz Radar 🔥 週刊バズ</title>
+<style>
+  :root{
+    --bg:#0b0d12; --bg2:#12151d; --card:#161a24; --card2:#1b2030;
+    --line:#252a36; --txt:#e9edf5; --sub:#9aa4b8; --accent:#ff4d6d;
+    --jp:#ff5a7a; --global:#4d9bff; --cn:#ffb84d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+    background:radial-gradient(1200px 600px at 70% -10%,#1a1f2e,transparent),var(--bg);color:var(--txt);}
+  .wrap{max-width:1000px;margin:0 auto;padding:28px 18px 80px;}
+  header h1{font-size:26px;margin:0 0 4px;letter-spacing:.5px}
+  header .meta{color:var(--sub);font-size:13px}
+  .controls{position:sticky;top:0;z-index:5;background:linear-gradient(var(--bg),rgba(11,13,18,.85));
+    backdrop-filter:blur(8px);padding:16px 0 12px;margin-top:18px;border-bottom:1px solid var(--line)}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .tab{border:1px solid var(--line);background:var(--bg2);color:var(--sub);padding:7px 14px;border-radius:999px;
+    cursor:pointer;font-size:13px;font-weight:600;transition:.15s}
+  .tab.active{color:#fff;border-color:transparent;background:var(--accent)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+  .chip{border:1px solid var(--line);background:transparent;color:var(--sub);padding:5px 11px;border-radius:8px;
+    cursor:pointer;font-size:12px;transition:.15s}
+  .chip.active{color:#fff;background:#2a3142;border-color:#3a4255}
+  .search{width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg2);
+    color:var(--txt);font-size:14px}
+  .search::placeholder{color:#5e677c}
+  .count{color:var(--sub);font-size:12px;margin:14px 2px 8px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;
+    display:flex;flex-direction:column;gap:9px;transition:.15s}
+  .card:hover{border-color:#3a4255;transform:translateY(-2px)}
+  .badges{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .badge{font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px}
+  .b-jp{background:rgba(255,90,122,.15);color:var(--jp)}
+  .b-global{background:rgba(77,155,255,.15);color:var(--global)}
+  .b-cn{background:rgba(255,184,77,.15);color:var(--cn)}
+  .b-genre{background:#222838;color:var(--sub)}
+  .fire{margin-left:auto;font-size:12px;letter-spacing:1px}
+  .card h3{margin:0;font-size:15px;line-height:1.4}
+  .card p{margin:0;color:var(--sub);font-size:13px;line-height:1.6}
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .links a{font-size:12px;color:#9ec5ff;text-decoration:none;border:1px solid #2a3550;padding:4px 10px;
+    border-radius:7px;transition:.15s}
+  .links a:hover{background:#16243d;border-color:#3a5580}
+  .empty{text-align:center;color:var(--sub);padding:50px 0}
+  footer{color:#5e677c;font-size:12px;text-align:center;margin-top:40px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🔥 Buzz Radar <span style="font-size:15px;color:var(--sub);font-weight:400">週刊バズ</span></h1>
+    <div class="meta" id="meta">読み込み中…</div>
+  </header>
+
+  <div class="controls">
+    <div class="tabs" id="regionTabs">
+      <button class="tab active" data-region="all">すべて</button>
+      <button class="tab" data-region="jp">🇯🇵 国内</button>
+      <button class="tab" data-region="global">🌎 海外</button>
+      <button class="tab" data-region="cn">🇨🇳 中国</button>
+    </div>
+    <div class="chips" id="genreChips"></div>
+    <input class="search" id="search" placeholder="🔍 キーワードで絞り込み（サービス名・キャラ名など）" />
+  </div>
+
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">該当なし。フィルターを変えてみてください。</div>
+
+  <footer>Buzz Radar — X / TikTok / Reddit / 微博・小紅書 / 国内まとめ を横断 · data.json を差し替えれば更新できます</footer>
+</div>
+
+<script>
+const GENRE_LABEL = {service:"サービス",character:"キャラ",event:"イベント",meme:"ミーム",music:"楽曲",person:"人物",topic:"トピック"};
+const REGION_LABEL = {jp:"国内",global:"海外",cn:"中国"};
+let DATA = {items:[]}, state = {region:"all", genres:new Set(), q:""};
+
+fetch("data.json?_="+Date.now()).then(r=>r.json()).then(d=>{
+  DATA = d;
+  document.getElementById("meta").textContent = `対象期間 ${d.period} ・ 更新 ${d.updated} ・ ${d.items.length}件`;
+  buildGenreChips();
+  render();
+}).catch(e=>{
+  document.getElementById("meta").textContent = "data.json を読めませんでした（ローカルサーバ経由で開いてください）";
+});
+
+function buildGenreChips(){
+  const genres = [...new Set(DATA.items.map(i=>i.genre))];
+  const box = document.getElementById("genreChips");
+  box.innerHTML = "";
+  genres.forEach(g=>{
+    const b = document.createElement("button");
+    b.className="chip"; b.textContent=GENRE_LABEL[g]||g; b.dataset.genre=g;
+    b.onclick=()=>{ b.classList.toggle("active");
+      if(state.genres.has(g)) state.genres.delete(g); else state.genres.add(g); render(); };
+    box.appendChild(b);
+  });
+}
+document.querySelectorAll("#regionTabs .tab").forEach(t=>{
+  t.onclick=()=>{ document.querySelectorAll("#regionTabs .tab").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active"); state.region=t.dataset.region; render(); };
+});
+document.getElementById("search").oninput = e=>{ state.q=e.target.value.toLowerCase(); render(); };
+
+function render(){
+  let items = DATA.items.slice().sort((a,b)=>(b.hot||0)-(a.hot||0));
+  if(state.region!=="all") items = items.filter(i=>i.region===state.region);
+  if(state.genres.size) items = items.filter(i=>state.genres.has(i.genre));
+  if(state.q) items = items.filter(i=>(i.title+i.summary).toLowerCase().includes(state.q));
+
+  const grid = document.getElementById("grid");
+  document.getElementById("count").textContent = `${items.length}件表示`;
+  document.getElementById("empty").style.display = items.length? "none":"block";
+  grid.innerHTML = items.map(cardHTML).join("");
+}
+
+function cardHTML(i){
+  const fire = "🔥".repeat(i.hot||1);
+  const links = (i.links||[]).map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`).join("");
+  return `<div class="card">
+    <div class="badges">
+      <span class="badge b-${i.region}">${REGION_LABEL[i.region]||i.region}</span>
+      <span class="badge b-genre">${GENRE_LABEL[i.genre]||i.genre}</span>
+      <span class="fire" title="勢い">${fire}</span>
+    </div>
+    <h3>${i.title}</h3>
+    <p>${i.summary}</p>
+    <div class="links">${links}</div>
+  </div>`;
+}
+</script>
+</body>
+</html>
