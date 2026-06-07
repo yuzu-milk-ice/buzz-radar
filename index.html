@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Buzz Radar 🔥 週刊バズ</title>
+<title>Buzz Radar 🔥 今日のバズ</title>
 <style>
   :root{
     --bg:#0b0d12; --bg2:#12151d; --card:#161a24; --card2:#1b2030;
@@ -55,7 +55,7 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>🔥 Buzz Radar <span style="font-size:15px;color:var(--sub);font-weight:400">週刊バズ</span></h1>
+    <h1>🔥 Buzz Radar <span style="font-size:15px;color:var(--sub);font-weight:400">今日のバズ</span></h1>
     <div class="meta" id="meta">読み込み中…</div>
   </header>
 
@@ -74,65 +74,56 @@
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">該当なし。フィルターを変えてみてください。</div>
 
-  <footer>Buzz Radar — X / TikTok / Reddit / 微博・小紅書 / 国内まとめ を横断 · data.json を差し替えれば更新できます</footer>
+  <footer>Buzz Radar — X / TikTok / Reddit / 微博・小紅書 / 国内まとめ を横断 · data.json を差し替え → node build.mjs で更新</footer>
 </div>
 
-<!-- データを同梱（サーバー不要・ファイルを開くだけで動く）。data.json があればそちらを優先して上書き表示 -->
+<!-- ▼▼ build.mjs が data.json をここに流し込む（編集しない）▼▼ -->
 <script id="embedded-data" type="application/json">
 {
-  "period": "2026-05-30 〜 2026-06-06",
-  "updated": "2026-06-06",
+  "period": "2026-06-07（直近24時間）",
+  "updated": "2026-06-07",
   "items": [
-    { "region": "jp", "genre": "event", "hot": 5, "title": "サグラダ・ファミリア「イエスの塔」完成 → NHK 6/11 世界初公開・生中継", "summary": "143年かけて建設中の主塔がついに完成。NHKが6/11に世界初公開の生中継を予告し、X・まとめで一気に拡散。", "links": [{ "label": "Togetter 人気まとめ", "url": "https://togetter.com/recentpopular" }] },
-    { "region": "jp", "genre": "person", "hot": 4, "title": "二宮和也が新プロジェクト始動", "summary": "新プロジェクト開始の投稿が19万いいね超・237万表示。ファンの反応で当週のいいねランキング上位に。", "links": [{ "label": "バズイート 10万いいね超まとめ", "url": "https://buzzweet.com/100k-fav-tweet/" }] },
-    { "region": "jp", "genre": "service", "hot": 4, "title": "「苦労キャンセル界隈」— リアルタイム翻訳が日常化", "summary": "生成AIで翻訳・買い物が即解決。AirPods Pro 3「ライブ翻訳」やiOS「CoeFont通訳」が牽引し、タイパ志向の新トレンドに。", "links": [{ "label": "日経トレンディ 2026予測", "url": "https://xtrend.nikkei.com/atcl/contents/18/01269/00001/" }] },
-    { "region": "jp", "genre": "service", "hot": 3, "title": "カラオケ新業態「VSING」", "summary": "気軽に人前で歌える“ステージ体験”サービス。誰もが主役になれる新しい推し活対象として浮上。", "links": [{ "label": "日経トレンディ", "url": "https://xtrend.nikkei.com/atcl/contents/18/01269/00001/" }] },
-    { "region": "jp", "genre": "character", "hot": 4, "title": "コラショ（進研ゼミ）がSNSミーム化", "summary": "ランドセルがモチーフのキャラがSNSミームとして使われ拡散。10代女子のキャラ調査でも注目株に。", "links": [{ "label": "マイナビ キャラ調査2026", "url": "https://cm-marketinglab.mynavi.jp/column/research_character-trend-26/" }] },
-    { "region": "jp", "genre": "character", "hot": 3, "title": "ケロロ軍曹 夏映画化＆全国ポップアップ", "summary": "1999年連載開始の作品が2026年夏に映画化。各地でポップアップが開催され懐かしさで再燃。", "links": [{ "label": "マイナビ キャラ調査2026", "url": "https://cm-marketinglab.mynavi.jp/column/research_character-trend-26/" }] },
-    { "region": "jp", "genre": "topic", "hot": 4, "title": "Z世代バズ商品：ラブブ・麻辣湯・デカドリンク・sago・少女漫画コア", "summary": "“沼らせる”バズ商品が連鎖。デカドリンク、sago、少女漫画コアなど平成リバイバル系が消費を牽引。", "links": [{ "label": "日経クロストレンド", "url": "https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01796/" }, { "label": "SB Creative バズ条件", "url": "https://www.sbbit.jp/article/cont1/177693" }] },
-    { "region": "global", "genre": "music", "hot": 5, "title": "Charli XCX「Rock Music」— stuck-frame glitch 編集", "summary": "“画面が止まるグリッチ編集”フォーマットがTikTokで急増。楽曲とセットでミーム化。", "links": [{ "label": "Ramdam: TikTok Trends June 2026", "url": "https://www.ramd.am/blog/trends-tiktok" }] },
-    { "region": "global", "genre": "music", "hot": 5, "title": "Josh Fawaz「Like a Prayer」リミックス＝2026サマーアンセム", "summary": "7秒リップシンク動画を量産する“今年の夏の定番”として爆発的に使用。", "links": [{ "label": "NewEngen: June TikTok Trends", "url": "https://newengen.com/insights/june-tiktok-trends/" }] },
-    { "region": "global", "genre": "music", "hot": 4, "title": "Saxboy Billy「The Puerto Rico Song」", "summary": "夏の“逃れられない耳に残る曲”としてリップシンク・フォーマットが継続的に拡散。", "links": [{ "label": "Ramdam: TikTok Trends", "url": "https://www.ramd.am/blog/trends-tiktok" }] },
-    { "region": "global", "genre": "meme", "hot": 4, "title": "「Wow, Ok」演技力チャレンジ", "summary": "表情の振り幅を見せる演技チャレンジがTikTokで流行。クリエイターが続々参戦。", "links": [{ "label": "Ramdam: TikTok Trends", "url": "https://www.ramd.am/blog/trends-tiktok" }] },
-    { "region": "global", "genre": "meme", "hot": 4, "title": "chill guy（ムーブメント化）", "summary": "もはや単なるミームを超えて社会現象化。“肩の力を抜いた”空気感がプラットフォーム横断で浸透。", "links": [{ "label": "NapoleonCat: Trending Memes", "url": "https://napoleoncat.com/blog/trending-memes/" }] },
-    { "region": "global", "genre": "meme", "hot": 4, "title": "Saxophone Gets Louder", "summary": "シンプル＆ドラマチックで“妙に共感できる”サックス・ミームがSNSを席巻。", "links": [{ "label": "NapoleonCat: Trending Memes", "url": "https://napoleoncat.com/blog/trending-memes/" }] },
-    { "region": "global", "genre": "meme", "hot": 3, "title": "呪術廻戦S3 禪院直哉ミーム", "summary": "S3放送で攻撃中に髪をかき上げる直哉の“過剰な自信”カットが今年初の大型ミームに。", "links": [{ "label": "NapoleonCat: Trending Memes", "url": "https://napoleoncat.com/blog/trending-memes/" }] },
-    { "region": "global", "genre": "topic", "hot": 4, "title": "「2026は新しい2016」ノスタルジー現象", "summary": "2016年の“軽やかでウキウキした空気”を再現する投稿が世界的に流行。当時の曲・写真で回帰ムード。", "links": [{ "label": "JustJared: 2016現象解説", "url": "https://www.justjared.com/2026/01/15/why-is-everyone-obsessed-with-2016-again-in-2026-viral-nostalgia-trend-explained/" }] },
-    { "region": "global", "genre": "event", "hot": 5, "title": "大型イベントがFYPを駆動（6月）", "summary": "Olivia Rodrigo新AL(6/12)、FIFA W杯(6/11開幕)、House of the Dragon S3(6/21)、Toy Story 5(6/19)が同時多発で関連投稿を量産。", "links": [{ "label": "Clipchamp: TikTok Trends", "url": "https://clipchamp.com/en/blog/tiktok-trends-challenges/" }] },
-    { "region": "global", "genre": "topic", "hot": 3, "title": "Reddit：コロナ・ロックダウンの“異常エピソード”が6年後に再バズ", "summary": "当時の過剰対応エピソードがr/allで拡散。今読むとシュールだと話題に。", "links": [{ "label": "OutKick 記事", "url": "https://www.outkick.com/culture/covid-19-flashbacks-six-years-reddit" }, { "label": "r/popular", "url": "https://www.reddit.com/r/popular/" }] },
-    { "region": "cn", "genre": "meme", "hot": 5, "title": "「苹果输入法你上过学没有」（Apple入力メソッド炎上ミーム）", "summary": "iOS純正キーボードの誤変換へのツッコミが微博で炎上的に拡散。“義務教育の網をすり抜けた”とネタ化。", "links": [{ "label": "今日热榜", "url": "https://rebang.today/" }, { "label": "新浪財経 Q1熱搜レポート", "url": "https://finance.sina.com.cn/wm/2026-05-26/doc-inhzfmyq1484541.shtml" }] },
-    { "region": "cn", "genre": "service", "hot": 4, "title": "Seedance 2.0（動画生成）が現象化", "summary": "AI動画生成機能が技術コミュニティから大衆へ越境。微博で“爆”級トレンドに。", "links": [{ "label": "新浪科技", "url": "https://finance.sina.com.cn/tech/internet/2026-05-22/doc-inhytuss5319943.shtml" }] },
-    { "region": "cn", "genre": "meme", "hot": 4, "title": "OpenClaw「龙虾养殖（ザリガニ養殖）」現象", "summary": "ニッチなネタが大衆ミームへ拡大。クロスドメインのメディア注目を集める典型的バズに。", "links": [{ "label": "新浪財経", "url": "https://finance.sina.com.cn/wm/2026-05-26/doc-inhzfmyq1484541.shtml" }] },
-    { "region": "cn", "genre": "topic", "hot": 4, "title": "小紅書 #家的丰容计划（暮らしに新鮮さを）", "summary": "惰性を破り日常に変化を加える話題が閲覧8億超。模様替え・生活改善の投稿が急増。", "links": [{ "label": "TopMarketing 小紅書Q1解読", "url": "https://www.itopmarketing.com/info22232" }] },
-    { "region": "cn", "genre": "topic", "hot": 3, "title": "小紅書 観鳥（鸟门）ブーム", "summary": "若者の新アウトドアとしてバードウォッチングが台頭。90日閲覧1.2億超、ノート数70%増。", "links": [{ "label": "TopMarketing 小紅書Q1解読", "url": "https://www.itopmarketing.com/info22232" }] },
-    { "region": "cn", "genre": "topic", "hot": 3, "title": "小紅書 #SheisBlooming / 独居“放飞生活”", "summary": "女性の“開花”を祝う話題が7100万超。独居コンテンツも“精緻vlog→放飞生活”へ風向き転換。", "links": [{ "label": "TopMarketing 小紅書Q1解読", "url": "https://www.itopmarketing.com/info22232" }] },
-    { "region": "cn", "genre": "meme", "hot": 3, "title": "黄色い猫の手スタンプ社交ミーム", "summary": "黄色い猫の肉球スタンプ＋手を振る動作の社交ミームが小紅書で7億超の話題に。", "links": [{ "label": "新榜 小紅書ランキング", "url": "https://www.newrank.cn/ranktopic/xiaohongshu" }] },
-    { "region": "cn", "genre": "service", "hot": 4, "title": "小紅書が2026 W杯の中国独占転播権を獲得・月活4億突破", "summary": "中長尺・深度コンテンツへ全面シフト。W杯配信権獲得で“爆発”局面に。", "links": [{ "label": "虎嗅網", "url": "https://www.huxiu.com/article/4861801.html" }] }
+    { "region": "jp", "genre": "sports", "hot": 5, "title": "巨人・増田大輝のスリーバント（バスターエンドラン）に称賛殺到", "summary": "6/7の巨人戦で増田がスリーバントを決めランナーを進塁。「ナイススリーバント」がトレンド入りし試合を沸かせた。", "links": [{ "label": "Yahoo!リアルタイム検索", "url": "https://search.yahoo.co.jp/realtime" }, { "label": "トレンドカレンダー", "url": "https://jp.trend-calendar.com/" }] },
+    { "region": "jp", "genre": "event", "hot": 5, "title": "「マヨナカテレビ」→ ペルソナ4R(P4R) 期待で祭り", "summary": "「マヨナカテレビ」がトレンド化。ペルソナ4リメイクの新情報を期待して「P4R確定だぁ」と盛り上がり。", "links": [{ "label": "Togetter", "url": "https://togetter.com/" }] },
+    { "region": "jp", "genre": "sports", "hot": 4, "title": "安田記念：シックスペンス差し切りV／武豊17年ぶり制覇", "summary": "8番人気シックスペンスが差し切り優勝。武豊が17年ぶり4回目の安田記念制覇で競馬クラスタが沸騰。", "links": [{ "label": "トレンドカレンダー", "url": "https://jp.trend-calendar.com/" }] },
+    { "region": "jp", "genre": "event", "hot": 3, "title": "『夜桜さんちの大作戦』第36話 放送で話題", "summary": "6/7 17時にMBS/TBSで第36話が放送開始。展開を巡りSNSが実況で盛り上がった。", "links": [{ "label": "Yahoo!リアルタイム検索", "url": "https://search.yahoo.co.jp/realtime" }] },
+    { "region": "jp", "genre": "music", "hot": 3, "title": "2026年6月の“今旬”バズ邦楽まとめ", "summary": "今まさに伸びている邦楽がまとめで拡散。ショート動画起点のヒットが続々ランクイン。", "links": [{ "label": "RAG Music 流行りの曲", "url": "https://www.ragnet.co.jp/trend-songs" }] },
+    { "region": "jp", "genre": "topic", "hot": 3, "title": "Z世代バズ商品：ラブブ・麻辣湯ほか（継続中）", "summary": "“沼らせる”バズ商品が引き続き拡散。平成リバイバル系が消費を牽引。", "links": [{ "label": "日経クロストレンド", "url": "https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01796/" }] },
+    { "region": "global", "genre": "event", "hot": 4, "title": "Tony Awards 2026（6/7開催）", "summary": "演劇界の祭典トニー賞が6/7開催。受賞・パフォーマンス関連クリップがSNSで拡散。", "links": [{ "label": "NewEngen: June Trends", "url": "https://newengen.com/insights/june-tiktok-trends/" }] },
+    { "region": "global", "genre": "music", "hot": 4, "title": "Nirvana「Smells Like Teen Spirit」が新たにバズ", "summary": "「oh well, whatever, nevermind」の歌詞に乗せた“気楽さ”表現としてTikTokで再燃。", "links": [{ "label": "NewEngen: June Trends", "url": "https://newengen.com/insights/june-tiktok-trends/" }] },
+    { "region": "global", "genre": "music", "hot": 5, "title": "Charli XCX「Rock Music」stuck-frame glitch（主役級）", "summary": "“画面が止まるグリッチ編集”が依然FYPの中心。瞬間を凍結する編集フォーマットが量産中。", "links": [{ "label": "Ramdam: TikTok Trends", "url": "https://www.ramd.am/blog/trends-tiktok" }] },
+    { "region": "global", "genre": "topic", "hot": 3, "title": "Pride Month がFYPを塗り替え（6月通月）", "summary": "6/1〜30のプライド月間関連コンテンツがフィードを横断的に席巻。", "links": [{ "label": "NewEngen: June Trends", "url": "https://newengen.com/insights/june-tiktok-trends/" }] },
+    { "region": "global", "genre": "meme", "hot": 3, "title": "chill guy（継続ムーブメント）", "summary": "“肩の力を抜いた”空気感のミームが依然プラットフォーム横断で浸透。", "links": [{ "label": "NapoleonCat: Trending Memes", "url": "https://napoleoncat.com/blog/trending-memes/" }] },
+    { "region": "cn", "genre": "event", "hot": 5, "title": "2026年 高考（大学入試）開幕・1290万人が受験", "summary": "6/7に全国の高考がスタート。受験者1290万人、各地で点数発表日も公表され微博の主要トレンドに。", "links": [{ "label": "rebang.today 全站ホット", "url": "https://rebang.today/" }, { "label": "微博 リアルタイム熱搜", "url": "https://weibo.com/a/hot/realtime" }] },
+    { "region": "cn", "genre": "meme", "hot": 4, "title": "高考“显眼包”応援ネタが拡散", "summary": "河南など各地の考点でカエル人形の花式応援、手作り向日葵で兄を応援…ほっこりネタが微博で続々バズ。", "links": [{ "label": "rebang.today", "url": "https://rebang.today/" }] },
+    { "region": "cn", "genre": "person", "hot": 3, "title": "赵兆の発言が娱乐圈で物議", "summary": "音楽プロデューサー赵兆の発言が芸能トピックとして拡散し議論に。", "links": [{ "label": "微博 リアルタイム熱搜", "url": "https://weibo.com/a/hot/realtime" }] },
+    { "region": "cn", "genre": "meme", "hot": 3, "title": "「苹果输入法你上过学没有」（継続ミーム）", "summary": "iOS純正キーボードの誤変換ネタが引き続き拡散。ツッコミ系ミームとして定着。", "links": [{ "label": "今日热榜", "url": "https://rebang.today/" }] }
   ]
 }
 </script>
+<!-- ▲▲ ここまで ▲▲ -->
 
 <script>
-const GENRE_LABEL = {service:"サービス",character:"キャラ",event:"イベント",meme:"ミーム",music:"楽曲",person:"人物",topic:"トピック"};
+const GENRE_LABEL = {service:"サービス",character:"キャラ",event:"イベント",meme:"ミーム",music:"楽曲",person:"人物",topic:"トピック",sports:"スポーツ"};
 const REGION_LABEL = {jp:"国内",global:"海外",cn:"中国"};
 let DATA = {items:[]}, state = {region:"all", genres:new Set(), q:""};
 
 function load(d){
   DATA = d;
-  document.getElementById("meta").textContent = `対象期間 ${d.period} ・ 更新 ${d.updated} ・ ${d.items.length}件`;
+  document.getElementById("meta").textContent = `対象 ${d.period} ・ 更新 ${d.updated} ・ ${d.items.length}件`;
   buildGenreChips();
   render();
 }
 
-// 1) まず同梱データで即表示（サーバー不要・file:// でも動く）
+// 1) 同梱データで即表示（サーバー不要・file:// でも動く）
 try { load(JSON.parse(document.getElementById("embedded-data").textContent)); }
 catch(e){ document.getElementById("meta").textContent = "データの読み込みに失敗しました"; }
 
-// 2) data.json があれば（サーバー経由で開いた場合）新しい方で上書き
+// 2) data.json があれば（サーバー経由）新しい方で上書き
 fetch("data.json?_="+Date.now())
   .then(r=> r.ok ? r.json() : null)
   .then(d=>{ if(d && Array.isArray(d.items)) load(d); })
-  .catch(()=>{ /* file:// 等では無視 */ });
+  .catch(()=>{});
 
 function buildGenreChips(){
   const genres = [...new Set(DATA.items.map(i=>i.genre))];
@@ -157,7 +148,6 @@ function render(){
   if(state.region!=="all") items = items.filter(i=>i.region===state.region);
   if(state.genres.size) items = items.filter(i=>state.genres.has(i.genre));
   if(state.q) items = items.filter(i=>(i.title+i.summary).toLowerCase().includes(state.q));
-
   const grid = document.getElementById("grid");
   document.getElementById("count").textContent = `${items.length}件表示`;
   document.getElementById("empty").style.display = items.length? "none":"block";
