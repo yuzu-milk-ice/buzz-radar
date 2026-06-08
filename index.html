@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Buzz Radar 🔥 今日のバズ</title>
+<title>Buzz Radar 🔥 初動バズ</title>
 <style>
   :root{
     --bg:#0b0d12; --bg2:#12151d; --card:#161a24; --card2:#1b2030;
     --line:#252a36; --txt:#e9edf5; --sub:#9aa4b8; --accent:#ff4d6d;
     --jp:#ff5a7a; --global:#4d9bff; --cn:#ffb84d;
+    --s-seed:#7c8cff; --s-accel:#37d39a; --s-break:#ffb020; --s-today:#ff6b9d;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
@@ -16,6 +17,8 @@
   .wrap{max-width:1000px;margin:0 auto;padding:28px 18px 80px;}
   header h1{font-size:26px;margin:0 0 4px;letter-spacing:.5px}
   header .meta{color:var(--sub);font-size:13px}
+  header .tagline{color:#c3ccdc;font-size:13px;margin-top:6px;background:#141925;border:1px solid var(--line);
+    display:inline-block;padding:6px 12px;border-radius:8px}
   .controls{position:sticky;top:0;z-index:5;background:linear-gradient(var(--bg),rgba(11,13,18,.85));
     backdrop-filter:blur(8px);padding:16px 0 12px;margin-top:18px;border-bottom:1px solid var(--line)}
   .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
@@ -41,6 +44,11 @@
   .b-global{background:rgba(77,155,255,.15);color:var(--global)}
   .b-cn{background:rgba(255,184,77,.15);color:var(--cn)}
   .b-genre{background:#222838;color:var(--sub)}
+  .stage{font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;border:1px solid transparent}
+  .st-初動{background:rgba(124,140,255,.14);color:var(--s-seed);border-color:rgba(124,140,255,.35)}
+  .st-加速中{background:rgba(55,211,154,.14);color:var(--s-accel);border-color:rgba(55,211,154,.35)}
+  .st-破圈寸前{background:rgba(255,176,32,.14);color:var(--s-break);border-color:rgba(255,176,32,.4)}
+  .st-今日{background:rgba(255,107,157,.14);color:var(--s-today);border-color:rgba(255,107,157,.4)}
   .fire{margin-left:auto;font-size:12px;letter-spacing:1px}
   .card h3{margin:0;font-size:15px;line-height:1.4}
   .card p{margin:0;color:var(--sub);font-size:13px;line-height:1.6}
@@ -55,8 +63,9 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>🔥 Buzz Radar <span style="font-size:15px;color:var(--sub);font-weight:400">今日のバズ</span></h1>
+    <h1>🔥 Buzz Radar <span style="font-size:15px;color:var(--sub);font-weight:400">初動バズ</span></h1>
     <div class="meta" id="meta">読み込み中…</div>
+    <div class="tagline">🌱 “急に湧いてきた” 初動・ニッチ優先 ｜ 巨大イベントは載せない</div>
   </header>
 
   <div class="controls">
@@ -66,65 +75,74 @@
       <button class="tab" data-region="global">🌎 海外</button>
       <button class="tab" data-region="cn">🇨🇳 中国</button>
     </div>
+    <div class="chips" id="stageChips"></div>
     <div class="chips" id="genreChips"></div>
-    <input class="search" id="search" placeholder="🔍 キーワードで絞り込み（サービス名・キャラ名など）" />
+    <input class="search" id="search" placeholder="🔍 キーワードで絞り込み（ARG・作品名・地名など）" />
   </div>
 
   <div class="count" id="count"></div>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">該当なし。フィルターを変えてみてください。</div>
 
-  <footer>Buzz Radar — X / TikTok / Reddit / 微博・小紅書 / 国内まとめ を横断 · data.json を差し替え → node build.mjs で更新</footer>
+  <footer>Buzz Radar — 初動・ニッチ発の急加速を横断（X / ARG界隈 / TikTok / Reddit / 微博・小紅書） · data.json 差し替え → node build.mjs で更新</footer>
 </div>
 
 <!-- ▼▼ build.mjs が data.json をここに流し込む（編集しない）▼▼ -->
 <script id="embedded-data" type="application/json">
 {
-  "period": "2026-06-07（直近24時間）",
-  "updated": "2026-06-07",
+  "period": "2026-06-08 ／ 初動・ニッチ優先",
+  "updated": "2026-06-08",
   "items": [
-    { "region": "jp", "genre": "sports", "hot": 5, "title": "巨人・増田大輝のスリーバント（バスターエンドラン）に称賛殺到", "summary": "6/7の巨人戦で増田がスリーバントを決めランナーを進塁。「ナイススリーバント」がトレンド入りし試合を沸かせた。", "links": [{ "label": "Yahoo!リアルタイム検索", "url": "https://search.yahoo.co.jp/realtime" }, { "label": "トレンドカレンダー", "url": "https://jp.trend-calendar.com/" }] },
-    { "region": "jp", "genre": "event", "hot": 5, "title": "「マヨナカテレビ」→ ペルソナ4R(P4R) 期待で祭り", "summary": "「マヨナカテレビ」がトレンド化。ペルソナ4リメイクの新情報を期待して「P4R確定だぁ」と盛り上がり。", "links": [{ "label": "Togetter", "url": "https://togetter.com/" }] },
-    { "region": "jp", "genre": "sports", "hot": 4, "title": "安田記念：シックスペンス差し切りV／武豊17年ぶり制覇", "summary": "8番人気シックスペンスが差し切り優勝。武豊が17年ぶり4回目の安田記念制覇で競馬クラスタが沸騰。", "links": [{ "label": "トレンドカレンダー", "url": "https://jp.trend-calendar.com/" }] },
-    { "region": "jp", "genre": "event", "hot": 3, "title": "『夜桜さんちの大作戦』第36話 放送で話題", "summary": "6/7 17時にMBS/TBSで第36話が放送開始。展開を巡りSNSが実況で盛り上がった。", "links": [{ "label": "Yahoo!リアルタイム検索", "url": "https://search.yahoo.co.jp/realtime" }] },
-    { "region": "jp", "genre": "music", "hot": 3, "title": "2026年6月の“今旬”バズ邦楽まとめ", "summary": "今まさに伸びている邦楽がまとめで拡散。ショート動画起点のヒットが続々ランクイン。", "links": [{ "label": "RAG Music 流行りの曲", "url": "https://www.ragnet.co.jp/trend-songs" }] },
-    { "region": "jp", "genre": "topic", "hot": 3, "title": "Z世代バズ商品：ラブブ・麻辣湯ほか（継続中）", "summary": "“沼らせる”バズ商品が引き続き拡散。平成リバイバル系が消費を牽引。", "links": [{ "label": "日経クロストレンド", "url": "https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01796/" }] },
-    { "region": "global", "genre": "event", "hot": 4, "title": "Tony Awards 2026（6/7開催）", "summary": "演劇界の祭典トニー賞が6/7開催。受賞・パフォーマンス関連クリップがSNSで拡散。", "links": [{ "label": "NewEngen: June Trends", "url": "https://newengen.com/insights/june-tiktok-trends/" }] },
-    { "region": "global", "genre": "music", "hot": 4, "title": "Nirvana「Smells Like Teen Spirit」が新たにバズ", "summary": "「oh well, whatever, nevermind」の歌詞に乗せた“気楽さ”表現としてTikTokで再燃。", "links": [{ "label": "NewEngen: June Trends", "url": "https://newengen.com/insights/june-tiktok-trends/" }] },
-    { "region": "global", "genre": "music", "hot": 5, "title": "Charli XCX「Rock Music」stuck-frame glitch（主役級）", "summary": "“画面が止まるグリッチ編集”が依然FYPの中心。瞬間を凍結する編集フォーマットが量産中。", "links": [{ "label": "Ramdam: TikTok Trends", "url": "https://www.ramd.am/blog/trends-tiktok" }] },
-    { "region": "global", "genre": "topic", "hot": 3, "title": "Pride Month がFYPを塗り替え（6月通月）", "summary": "6/1〜30のプライド月間関連コンテンツがフィードを横断的に席巻。", "links": [{ "label": "NewEngen: June Trends", "url": "https://newengen.com/insights/june-tiktok-trends/" }] },
-    { "region": "global", "genre": "meme", "hot": 3, "title": "chill guy（継続ムーブメント）", "summary": "“肩の力を抜いた”空気感のミームが依然プラットフォーム横断で浸透。", "links": [{ "label": "NapoleonCat: Trending Memes", "url": "https://napoleoncat.com/blog/trending-memes/" }] },
-    { "region": "cn", "genre": "event", "hot": 5, "title": "2026年 高考（大学入試）開幕・1290万人が受験", "summary": "6/7に全国の高考がスタート。受験者1290万人、各地で点数発表日も公表され微博の主要トレンドに。", "links": [{ "label": "rebang.today 全站ホット", "url": "https://rebang.today/" }, { "label": "微博 リアルタイム熱搜", "url": "https://weibo.com/a/hot/realtime" }] },
-    { "region": "cn", "genre": "meme", "hot": 4, "title": "高考“显眼包”応援ネタが拡散", "summary": "河南など各地の考点でカエル人形の花式応援、手作り向日葵で兄を応援…ほっこりネタが微博で続々バズ。", "links": [{ "label": "rebang.today", "url": "https://rebang.today/" }] },
-    { "region": "cn", "genre": "person", "hot": 3, "title": "赵兆の発言が娱乐圈で物議", "summary": "音楽プロデューサー赵兆の発言が芸能トピックとして拡散し議論に。", "links": [{ "label": "微博 リアルタイム熱搜", "url": "https://weibo.com/a/hot/realtime" }] },
-    { "region": "cn", "genre": "meme", "hot": 3, "title": "「苹果输入法你上过学没有」（継続ミーム）", "summary": "iOS純正キーボードの誤変換ネタが引き続き拡散。ツッコミ系ミームとして定着。", "links": [{ "label": "今日热榜", "url": "https://rebang.today/" }] }
+    { "region": "jp", "genre": "service", "stage": "破圈寸前", "hot": 5, "title": "第四境界「D4KK GUEST ARG」始動＝インディーARGの“入口”", "summary": "ARG専門プラットフォームを無償提供し、25本の無料インディーARGをラインナップ。ニッチ界隈の入口として一気に注目が加速。", "links": [{ "label": "4Gamer", "url": "https://www.4gamer.net/games/964/G096414/20251225021/" }, { "label": "gamebiz", "url": "https://gamebiz.jp/news/418267" }] },
+    { "region": "jp", "genre": "game", "stage": "今日", "hot": 4, "title": "第四境界「かがみの特殊少年更生施設TRPG」本日6/8発売", "summary": "ARG集団・第四境界の新作TRPG。少年院から自我を保って逃げ切る体験型で、発売前から考察勢が盛り上がり。", "links": [{ "label": "第四境界 公式", "url": "https://www.daiyonkyokai.net/about/" }, { "label": "denfaminicogamer", "url": "https://news.denfaminicogamer.jp/news/251225i" }] },
+    { "region": "jp", "genre": "game", "stage": "加速中", "hot": 4, "title": "第四境界「人のゲームカセット」ブラウザで動く偽ゲーム機ARG", "summary": "架空ゲーム機PLAYGATE向け『つねなる光とともに』。5月末リリース、実際にブラウザ起動できる仕掛けで考察が拡散中。", "links": [{ "label": "第四境界まとめ(note)", "url": "https://note.com/reethecat/n/n8b344d214467" }] },
+    { "region": "jp", "genre": "game", "stage": "加速中", "hot": 3, "title": "国産インディー「One Turn Kill」がじわじわヒット", "summary": "1ターン内のカード構築で勝つバトル。2026 Q1の国産Steamで最大ヒット級、コア層に深く刺さり継続伸長。", "links": [{ "label": "国産Steam分析(note)", "url": "https://note.com/frenchbread/n/n9404024be589" }] },
+    { "region": "jp", "genre": "topic", "stage": "加速中", "hot": 3, "title": "“ニッチの大衆化”が今年前半のヒット法則に", "summary": "小さく濃い界隈発が大衆へ抜ける流れがキーワード化。初動を読む視点として注目。", "links": [{ "label": "日経クロストレンド", "url": "https://xtrend.nikkei.com/atcl/trn/pickup/15/1008498/062000796/" }] },
+    { "region": "global", "genre": "meme", "stage": "加速中", "hot": 4, "title": "「Underground Rap Iceberg Chart 2026」", "summary": "TrendingRaps発の“どこまで深く知ってる”氷山ミーム。無名度の階層を競うコメント文化が拡散。", "links": [{ "label": "Grokipedia", "url": "https://grokipedia.com/page/2026_Underground_Rap_Iceberg_Chart" }] },
+    { "region": "global", "genre": "meme", "stage": "加速中", "hot": 4, "title": "「you can't out-niche me」ニッチ知識＝文化資本ミーム", "summary": "誰が一番マニアックかを競う“out-niche”ミーム。ニッチ参照そのものがネタとして世界的に拡散。", "links": [{ "label": "sabukaru", "url": "https://sabukaru.online/articles/underground-is-the-new-mainstream-how-niche-culture-took-over" }] },
+    { "region": "global", "genre": "music", "stage": "初動", "hot": 3, "title": "アルゴリズム外の“Scenes”でニッチ電子音楽ディスカバリー", "summary": "レコメンド任せをやめ、人力キュレーションの局所シーンで新ジャンルを掘る動きが静かに台頭。", "links": [{ "label": "Change Underground", "url": "https://change-underground.com/discovering-niche-electronic-music-genres-beyond-the-algorithm/" }] },
+    { "region": "cn", "genre": "topic", "stage": "破圈寸前", "hot": 4, "title": "潮汕（汕头・潮州・揭阳）が旅行ダークホース化", "summary": "“食の乗り換え地”扱いだった潮汕がSNS発で急浮上。汕头のホテル予約186%増など破圈の初期局面。", "links": [{ "label": "澎湃新闻", "url": "https://m.thepaper.cn/newsDetail_forward_32632824" }] },
+    { "region": "cn", "genre": "topic", "stage": "初動", "hot": 3, "title": "“次のダークホース冷門スポット”探しが進行中", "summary": "淄博・ハルビン・天水に続く「次に破圈する冷門目的地」をSNSで先回りで探す動きが活発化。", "links": [{ "label": "澎湃新闻", "url": "https://m.thepaper.cn/newsDetail_forward_32632824" }] }
   ]
 }
 </script>
 <!-- ▲▲ ここまで ▲▲ -->
 
 <script>
-const GENRE_LABEL = {service:"サービス",character:"キャラ",event:"イベント",meme:"ミーム",music:"楽曲",person:"人物",topic:"トピック",sports:"スポーツ"};
+const GENRE_LABEL = {service:"サービス",character:"キャラ",event:"イベント",meme:"ミーム",music:"楽曲",person:"人物",topic:"トピック",sports:"スポーツ",game:"ゲーム"};
 const REGION_LABEL = {jp:"国内",global:"海外",cn:"中国"};
-let DATA = {items:[]}, state = {region:"all", genres:new Set(), q:""};
+const STAGE_ORDER = {"今日":0,"初動":1,"加速中":2,"破圈寸前":3};
+let DATA = {items:[]}, state = {region:"all", genres:new Set(), stages:new Set(), q:""};
 
 function load(d){
   DATA = d;
   document.getElementById("meta").textContent = `対象 ${d.period} ・ 更新 ${d.updated} ・ ${d.items.length}件`;
+  buildStageChips();
   buildGenreChips();
   render();
 }
 
-// 1) 同梱データで即表示（サーバー不要・file:// でも動く）
 try { load(JSON.parse(document.getElementById("embedded-data").textContent)); }
 catch(e){ document.getElementById("meta").textContent = "データの読み込みに失敗しました"; }
 
-// 2) data.json があれば（サーバー経由）新しい方で上書き
 fetch("data.json?_="+Date.now())
   .then(r=> r.ok ? r.json() : null)
   .then(d=>{ if(d && Array.isArray(d.items)) load(d); })
   .catch(()=>{});
 
+function buildStageChips(){
+  const stages = [...new Set(DATA.items.map(i=>i.stage).filter(Boolean))]
+    .sort((a,b)=>(STAGE_ORDER[a]??9)-(STAGE_ORDER[b]??9));
+  const box = document.getElementById("stageChips");
+  box.innerHTML = "";
+  stages.forEach(s=>{
+    const b = document.createElement("button");
+    b.className="chip"; b.textContent="● "+s; b.dataset.stage=s;
+    b.onclick=()=>{ b.classList.toggle("active");
+      if(state.stages.has(s)) state.stages.delete(s); else state.stages.add(s); render(); };
+    box.appendChild(b);
+  });
+}
 function buildGenreChips(){
   const genres = [...new Set(DATA.items.map(i=>i.genre))];
   const box = document.getElementById("genreChips");
@@ -147,6 +165,7 @@ function render(){
   let items = DATA.items.slice().sort((a,b)=>(b.hot||0)-(a.hot||0));
   if(state.region!=="all") items = items.filter(i=>i.region===state.region);
   if(state.genres.size) items = items.filter(i=>state.genres.has(i.genre));
+  if(state.stages.size) items = items.filter(i=>state.stages.has(i.stage));
   if(state.q) items = items.filter(i=>(i.title+i.summary).toLowerCase().includes(state.q));
   const grid = document.getElementById("grid");
   document.getElementById("count").textContent = `${items.length}件表示`;
@@ -156,12 +175,14 @@ function render(){
 
 function cardHTML(i){
   const fire = "🔥".repeat(i.hot||1);
+  const stage = i.stage ? `<span class="stage st-${i.stage}">${i.stage}</span>` : "";
   const links = (i.links||[]).map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`).join("");
   return `<div class="card">
     <div class="badges">
+      ${stage}
       <span class="badge b-${i.region}">${REGION_LABEL[i.region]||i.region}</span>
       <span class="badge b-genre">${GENRE_LABEL[i.genre]||i.genre}</span>
-      <span class="fire" title="勢い">${fire}</span>
+      <span class="fire" title="伸びの勢い">${fire}</span>
     </div>
     <h3>${i.title}</h3>
     <p>${i.summary}</p>
