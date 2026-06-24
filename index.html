@@ -55,6 +55,8 @@
   .fire{margin-left:auto;font-size:12px;letter-spacing:1px}
   .card h3{margin:0;font-size:15px;line-height:1.4}
   .card p{margin:0;color:var(--sub);font-size:13px;line-height:1.6}
+  .signal{margin:2px 0 0;font-size:12px;line-height:1.55;color:#c9f5e3;background:rgba(55,211,154,.08);
+    border-left:3px solid var(--s-accel);padding:7px 10px;border-radius:0 8px 8px 0}
   .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
   .links a{font-size:12px;color:#9ec5ff;text-decoration:none;border:1px solid #2a3550;padding:4px 10px;
     border-radius:7px;transition:.15s}
@@ -68,7 +70,7 @@
   <header>
     <h1>🔥 Buzz Radar <span style="font-size:15px;color:var(--sub);font-weight:400">初動バズ</span></h1>
     <div class="meta" id="meta">読み込み中…</div>
-    <div class="tagline">🌱 “急に湧いてきた” 初動・ニッチ優先 ｜ 巨大イベントは載せない</div>
+    <div class="tagline">🔭 まだ無名・これから来る「先行指標」だけ ｜ 既に有名なものは載せない</div>
   </header>
 
   <div class="controls">
@@ -93,29 +95,23 @@
 <!-- ▼▼ build.mjs が data.json をここに流し込む（編集しない）▼▼ -->
 <script id="embedded-data" type="application/json">
 {
-  "period": "2026-06-24 ／ 初動・ニッチ優先（網羅版）",
+  "period": "2026-06-24 ／ 先行指標版（まだ無名・これから来る）",
   "updated": "2026-06-24",
   "items": [
-    { "region": "jp", "genre": "meme", "stage": "破圈寸前", "hot": 5, "title": "「イタリアンブレインロット」AI不条理ミーム", "summary": "AI生成の不条理キャラ群（イタリア語風の珍生物）が中毒性で拡散。2026春以降じわじわ広がり国内でも定着フェーズへ。", "links": [{ "label": "日本ミーム速報(filmora)", "url": "https://filmora.wondershare.jp/video-editing-tips/popular-japanese-memes.html" }] },
-    { "region": "jp", "genre": "topic", "stage": "加速中", "hot": 4, "title": "さかたはるき「一緒に帰りたかったアメリカ人ちゃん」234万表示", "summary": "何気ない日常マンガ系投稿が234.1万表示。X発の“じわ伸び→大バズ”の典型で当週の話題に。", "links": [{ "label": "バズイート", "url": "https://buzzweet.com/photo-tweet/" }] },
-    { "region": "jp", "genre": "person", "stage": "加速中", "hot": 4, "title": "ME:I・TSUZUMI が実写版『モアナ』日本版声優に", "summary": "実写版『モアナと伝説の海』主人公の日本版声優にTSUZUMIが決定。ファン外にも波及して急浮上。", "links": [{ "label": "バズイート", "url": "https://buzzweet.com/photo-tweet/" }] },
-    { "region": "jp", "genre": "music", "stage": "加速中", "hot": 4, "title": "クレイジーウォウウォ!「心臓マッスル」", "summary": "ダンスロックの新人。5月先行配信→7月1stアルバム『WOW』へ。インディーでじわじわ存在感を拡大中。", "links": [{ "label": "RAG Music", "url": "https://www.ragnet.co.jp/jpop-new-songs/17" }] },
-    { "region": "jp", "genre": "food", "stage": "今日", "hot": 4, "title": "コンビニ「まぜまぜスイーツ」が新感覚で話題", "summary": "ストローで混ぜて食べる「いちごミルク／抹茶ラテ わらびもち入り」が登場。SNS映え×新食感でじわ拡散。", "links": [{ "label": "もぐナビ", "url": "https://mognavi.jp/news/matome/gen-newProduct-21993/" }] },
-    { "region": "jp", "genre": "food", "stage": "初動", "hot": 3, "title": "秩父産“和メープル”商品が先行発売で浮上", "summary": "埼玉・秩父産の和メープルを使った商品が6/22コンビニ先行→6/29全国スーパーへ。地場素材の初動枠。", "links": [{ "label": "もぐナビ 新商品", "url": "https://mognavi.jp/newitem" }] },
-    { "region": "jp", "genre": "vtuber", "stage": "初動", "hot": 3, "title": "“個人勢VTuber発掘”ブーム／すぺしゃりて5期生", "summary": "まだ見つかっていない隠れた才能を掘る個人勢推しが人気化。女性事務所「すぺしゃりて」も5期生3名をデビュー。", "links": [{ "label": "東京アニメ(個人勢の探し方)", "url": "https://www.anime.ac.jp/contents/column-2/v-tuber/774/" }] },
-    { "region": "jp", "genre": "food", "stage": "加速中", "hot": 3, "title": "チェーン新作：マック「シャカポテ ガーリックステーキ味」など", "summary": "マックの新シャカシャカポテト、スタバ「クラフトジューシーピーチティー」など夏チェーン新作が連続でバズ。", "links": [{ "label": "えん食べ", "url": "https://entabe.jp/" }] },
-    { "region": "jp", "genre": "music", "stage": "初動", "hot": 3, "title": "夏曲「初恋のこたえ。」配信スタート", "summary": "6/18にアイドルグループが疾走感のある夏曲を配信リリース。シーズン曲として初動で拡散。", "links": [{ "label": "RAG Music", "url": "https://www.ragnet.co.jp/jpop-new-songs/17" }] },
-    { "region": "jp", "genre": "meme", "stage": "加速中", "hot": 3, "title": "「スピキ」「エッホエッホ」が継続バズ", "summary": "中毒音「スピキ（スピッキー）」と擬音ミーム「エッホエッホ」が引き続きTikTok/Xで使われ定着。", "links": [{ "label": "2026ネットミームまとめ(note)", "url": "https://note.com/edimakor_japan/n/n72081724c5a2" }] },
+    { "region": "jp", "genre": "game", "stage": "初動", "hot": 3, "title": "itch.io発「Hamsteria」2人協力ハムスターACT", "summary": "個人開発の協力アクション。itch.ioのインディー枠で静かに注目され始めている。", "signal": "itch.io発の協力ゲーは配信向きで“友達と”需要に直撃。口コミ→実況で表に出る導線が太い。", "links": [{ "label": "nippon-itch コレクション", "url": "https://itch.io/c/200751/itchio" }] },
+    { "region": "jp", "genre": "music", "stage": "初動", "hot": 3, "title": "同人音楽シーンの新譜発掘（M3-2026春／Bandcamp Friday）", "summary": "メジャー流通外の新譜が同人音楽info・BOOTH・Bandcamp経由で静かに広がる。", "signal": "ボカロ/ゲーム実況/MVを介して“表”に出る導線が太い。次のヒット曲はこの層から漏れ出す。", "links": [{ "label": "同人音楽info", "url": "https://www.dojin-music.info/" }] },
+    { "region": "jp", "genre": "vtuber", "stage": "初動", "hot": 3, "title": "“個人勢VTuber発掘”が推し活の主流化", "summary": "母数4万・平均活動8ヶ月の個人勢から、登録者が少ない初期に原石を探す動きが拡大。", "signal": "「自分で見つけて初期から推す」体験が文化化。次のブレイクは大手でなく無名個人勢から出る構造。", "links": [{ "label": "東京アニメ(個人勢の探し方)", "url": "https://www.anime.ac.jp/contents/column-2/v-tuber/774/" }] },
 
-    { "region": "global", "genre": "meme", "stage": "破圈寸前", "hot": 5, "title": "「Food Jutsu」CapCutアニメ召喚トランジション", "summary": "呪術廻戦のBGMで“ポーズ→召喚”して料理を出すアニメ風トランジションが今月のブレイク・フォーマット。飲食ブランドも続々参戦。", "links": [{ "label": "NewEngen: June TikTok Trends", "url": "https://newengen.com/insights/june-tiktok-trends/" }] },
-    { "region": "global", "genre": "meme", "stage": "加速中", "hot": 4, "title": "「Calamity Cat」誤変換ミーム", "summary": "ニッチなペット写真＋「best→beastに誤変換された」キャプションがX で爆発。小さなニッチ発が大バズ化した好例。", "links": [{ "label": "Accio: Trending Memes", "url": "https://www.accio.com/business/trending-memes-june-2026" }] },
-    { "region": "global", "genre": "music", "stage": "加速中", "hot": 4, "title": "Nyck Caution「PRESSURE!」", "summary": "サッカー映像に乗る楽曲として約12万本のTikTokで使用。クラブ公式アカウントも続々採用し音源発で拡大。", "links": [{ "label": "NewEngen", "url": "https://newengen.com/insights/june-tiktok-trends/" }] },
-    { "region": "global", "genre": "topic", "stage": "加速中", "hot": 3, "title": "ニッチ・サブカル系トレンドが乱立", "summary": "「Academic Weapon」「Cozy Gaming Desk」「Clean Girl but Real Life」など、特定界隈の内輪ネタ化した小トレンドが並走。", "links": [{ "label": "Accio", "url": "https://www.accio.com/business/top-trending-memes-2026" }] },
-    { "region": "global", "genre": "service", "stage": "初動", "hot": 3, "title": "AIミーム生成ツールが台頭（Snap Lens Studio / MemeDeck）", "summary": "テキストから自作ARレンズを作るSnap「Lens Studio」単独アプリや、テンプレ即ミーム化の「MemeDeck」など制作democratizeが進行。", "links": [{ "label": "Accio", "url": "https://www.accio.com/business/trending-memes-june-2026" }] },
+    { "region": "global", "genre": "game", "stage": "破圈寸前", "hot": 4, "title": "Windrose（海賊サバイバル／タシケント発）", "summary": "デモ公開だけでSteam wishlist 100万超、同接約1.7万。Valheim×ソウルライト×大航海。", "signal": "未発売でこのwishlist速度は“発売で跳ねる”最強の先行指標。無名スタジオ発という点も伸びしろ。", "links": [{ "label": "Indie Surge(GameNGuide)", "url": "https://www.gamenguide.com/articles/107681/20260325/2026-indie-surge-top-upcoming-releases-release-dates-wishlist-now.htm" }] },
+    { "region": "global", "genre": "game", "stage": "初動", "hot": 3, "title": "Burglin' Gnomes（協力ノーム侵入カオス）", "summary": "ノームで家に侵入して暴れる協力ゲーが口コミだけでランキング上位に急浮上。", "signal": "“友達と笑える”協力カオス系は配信ドリブンでバイラル化しやすい黄金パターン。", "links": [{ "label": "Lords of Gaming", "url": "https://lordsofgaming.net/2026/03/20-games-you-should-be-looking-forward-to-in-2026-based-on-my-steam-next-fest-impressions/" }] },
+    { "region": "global", "genre": "game", "stage": "初動", "hot": 3, "title": "Divinum（メトロイドヴァニア・隠れ本命）", "summary": "独特の戦闘と上質なピクセルアートで“Ori／Hollow Knight級”と評される未発売作。", "signal": "ジャンル名作の系譜＋美術評価。コア層の事前評価が高く、発売で評論家経由に広がりやすい。", "links": [{ "label": "Top 10 Indies(Medium)", "url": "https://skittzipoo.medium.com/top-10-indies-to-wishlist-for-2026-7248f7495daf" }] },
+    { "region": "global", "genre": "game", "stage": "初動", "hot": 3, "title": "REANIMAL（協力ホラー／Next Fest頭角）", "summary": "過去最大規模だったSteam Next Fest June 2026で頭角。", "signal": "Co-op×ホラーはNext Festで最も成功率が高い王道導線。“友達とプレイ”が最強の自然拡散フック。", "links": [{ "label": "Steam Next Fest June 2026", "url": "https://tech-insider.org/steam-next-fest-june-2026/" }] },
+    { "region": "global", "genre": "topic", "stage": "加速中", "hot": 4, "title": "C-drama/K-drama 英語吹替リキャップ（空白ニッチ）", "summary": "英語吹替リキャップ系の検索が13倍成長、しかし質の高い作り手が極端に少ない。", "signal": "需要急増×供給スカスカの“空白ニッチ”。先行者総取りになりやすく、ここから新スターが出る。", "links": [{ "label": "Untapped Niches(Medium)", "url": "https://medium.com/write-your-world/untapped-youtube-niches-in-2026-grab-these-before-theyre-gone-7236a2070e9b" }] },
+    { "region": "global", "genre": "topic", "stage": "初動", "hot": 3, "title": "ホームステディング（裏庭養鶏・DIYソーラー）", "summary": "「backyard chickens 2026」「solar for beginners」系の検索が16倍成長。", "signal": "自給・コスパ・脱アルゴリズムの生活志向が動画ニッチとして急成長。生活系インフルの次の鉱脈。", "links": [{ "label": "Unexpected Niches(Medium)", "url": "https://medium.com/write-your-world/unexpected-youtube-niches-that-can-make-you-thousands-in-2026-hidden-opportunities-for-aspiring-5a4eef09ec0a" }] },
+    { "region": "global", "genre": "topic", "stage": "初動", "hot": 3, "title": "シャドウワーク／元型 心理コンテンツ", "summary": "影の統合・アーキタイプ等の心理系は低競争かつ高RPM（$7+）だが噛み砕く作り手が不在。", "signal": "スピリチュアル×自己探求の再来。難解さを平易化できれば一気に空白を埋められる。", "links": [{ "label": "Unexpected Niches(Medium)", "url": "https://medium.com/write-your-world/unexpected-youtube-niches-that-can-make-you-thousands-in-2026-hidden-opportunities-for-aspiring-5a4eef09ec0a" }] },
 
-    { "region": "cn", "genre": "topic", "stage": "破圈寸前", "hot": 4, "title": "小红书「人类丰容」実験が拡散", "summary": "“暮らしに新鮮さを足す”#家的丰容计划 が閲覧8億超、#人你该丰容了 も90日で億超。自己改善ムーブとして破圈中。", "links": [{ "label": "TopMarketing 小紅書解読", "url": "https://www.itopmarketing.com/info22232" }] },
-    { "region": "cn", "genre": "meme", "stage": "加速中", "hot": 4, "title": "黄色い猫の手スタンプ社交ミーム", "summary": "黄色い猫の肉球スタンプ＋手を振る動作の“软萌×魔性”な挨拶ミームが小红書で90日7億超の話題に。", "links": [{ "label": "TopMarketing 小紅書解読", "url": "https://www.itopmarketing.com/info22232" }] },
-    { "region": "cn", "genre": "service", "stage": "加速中", "hot": 4, "title": "小红书が中長尺へ全面シフト・月活4億", "summary": "W杯転播権獲得・日均検索8億超を背景に、長図文/ポッドキャスト/4K長尺へ500億トラフィックを投下。プラットフォームの地殻変動。", "links": [{ "label": "虎嗅網", "url": "https://www.huxiu.com/article/4861801.html" }] }
+    { "region": "cn", "genre": "game", "stage": "初動", "hot": 3, "title": "「Rougelike Cells」ローグライク×ソウルライク", "summary": "300時間超のリプレイ性・200超の武器/スキルを謳う中国インディー。冷门だがコア評価が先行。", "signal": "“やり込み厚”系は熱量の高い少数から火がつき、実況・MOD経由でじわ拡大する典型。", "links": [{ "label": "宝藏手游(搜狐)", "url": "https://m.sohu.com/a/983961269_122580125" }] },
+    { "region": "cn", "genre": "music", "stage": "初動", "hot": 3, "title": "抖音「冷门好听歌曲2026」発掘カルチャー", "summary": "“まだ火じゃないけど良い曲”を掘って共有する視聴行動が定着。", "signal": "この発掘導線から無名曲が一夜で破圈する例が頻発。次のバズ曲の発生源になりやすい。", "links": [{ "label": "抖音 検索", "url": "https://www.douyin.com/search/%E5%86%B7%E9%97%A8%E6%AD%8C%E6%9B%B2%E5%A5%BD%E5%90%AC%E5%8F%88%E4%B8%8D%E7%81%AB2026" }] }
   ]
 }
 </script>
@@ -199,6 +195,7 @@ function cardHTML(i){
     </div>
     <h3>${i.title}</h3>
     <p>${i.summary}</p>
+    ${i.signal ? `<div class="signal">📈 なぜ来る：${i.signal}</div>` : ""}
     <div class="links">${links}</div>
   </div>`;
 }
